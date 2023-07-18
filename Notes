@@ -1,0 +1,33 @@
+Installation Steps
+----------------------
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt install ansible
+
+Host inventory file location
+-------------------------------
+/etc/ansible/hosts
+
+Adding worker node info
+-------------------------------
+n1 ansible_host=172.31.36.169 ansible_ssh_private_key_file=/home/ubuntu/default_keypair.pem ansible_user=ubuntu
+
+Test Connection from Ansible master to worker node
+-----------------------------------------------------
+ansible n1 -m ping
+ansible all -m ping
+
+Ansible is all about modules
+
+Normally, we can install apache2 by using below command
+--------------------------------------------------------
+sudo apt update
+sudo apt install apache2
+
+We can perform the tasks in ansible by using Ad HOC Commands or Playbooks
+
+AdHOC Commands
+------------------
+ansible <all> -m <modulename> -a "<arguments>" -b
+
+ansible all -m apt -a "update_cache=true name=apache2 state=latest" -b
