@@ -61,6 +61,8 @@ Convert above this (touch 1.txt) command to ansile adhoc command
 
 ansible all -m file -a "path=/home/ubuntu/1.txt state=touch" -b
 
+added extra
+
 
 
 
