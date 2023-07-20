@@ -1,15 +1,14 @@
 - name: Configurung webservers
-  hosts: all
+  hosts: centos7
   become: yes
 
   tasks:
     - name: Install apache2
-      apt:
-        name: apache2
+      yum:
+        name: httpd
         state: present
 
     - name: Start apache2
       service:
-        name: apache2
+        name: httpd
         state: started
-        

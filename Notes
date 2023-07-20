@@ -122,7 +122,27 @@ ansible all -m apt -a "name=apache2 state=present" -b
         name: apache2
         state: stopped
 
+--------------------------------------
 
+To install webserver in centos use httpd and below is the command to install and start it
+
+sudo yum install httpd
+sudo systemctl start httpd
+
+- name: Configurung webservers
+  hosts: centos7
+  become: yes
+
+  tasks:
+    - name: Install apache2
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start apache2
+      service:
+        name: httpd
+        state: started
 
 
 
