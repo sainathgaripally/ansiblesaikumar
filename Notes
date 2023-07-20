@@ -61,9 +61,66 @@ Convert above this (touch 1.txt) command to ansile adhoc command
 
 ansible all -m file -a "path=/home/ubuntu/1.txt state=touch" -b
 
-added extra
+-------------------------------------------------------------------------
+Suppose, if i have 10 servers out of which 5 are app, 5 are web
+
+I need to install apache2 in 5 webservers
+I need to install java in 5 app servers
 
 
+[webservers]
+n1 ansible_host user pemfile
+n2
+n3
+n4
+n5 ansible_host user pemfile
+
+[appservers]
+n6 ansible_host user pemfile
+n7
+n8
+n9
+n10 ansible_host user pemfile
+
+ansible webservers -m apt -a "name=apache2 state=present" -b
+
+ansible appservers -m apt -a "name=java state=present" -b
+
+------------------------------------------------------
+
+ansible all -m apt -a "name=apache2 state=present" -b
+
+-> The above command will perform only one task, what if i want to execute multiple tasks at a time,
+here come the playbooks
+
+ansible all -m apt -a "name=apache2 state=present" -b
+ansible all -m service -a "name=apache2 state=stop" -b
+ansible all -m service -a "name=apache2 state=restart" -b
+
+---------------------------------------------------------------
+Playbooks -> Plays -> Tasks -> Modules
+
+Playbook written in the form of yaml.
+
+Playbook to install apache2 
+-------------------------------
+
+ansible all -m apt -a "name=apache2 state=present" -b
+
+- name: Configurung webservers
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install apache2
+      apt:
+        name: apache2
+        state: present
+
+    - name: Stop apache2
+      service:
+        name: apache2
+        state: stopped
 
 
 
