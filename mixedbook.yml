@@ -15,3 +15,12 @@
         state: present
       when: ansible_distribution == "Ubuntu"
 
+    - name: Create test.html file
+      copy:
+        src: /home/ubuntu/ansiblesaikumar/test.html
+        dest: /var/www/html/test.html
+      when: ansible_distribution == "CentOS"
+
+
+
+
