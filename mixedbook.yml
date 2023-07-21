@@ -3,6 +3,7 @@
   become: yes
   vars:
     first_name: "Sainath"
+    my_port: 100
 
   tasks:
     - name: Install httpd
@@ -34,6 +35,12 @@
       template:
         src: /home/ubuntu/ansiblesaikumar/test.j2
         dest: /var/www/html/test.html
+
+    - name: Copy httpd.conf file
+      template:
+        src: /home/ubuntu/ansiblesaikumar/httpd.j2
+        dest: /etc/httpd/conf/httpd.conf
+
 
 
 
