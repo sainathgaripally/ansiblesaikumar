@@ -19,7 +19,6 @@
       template:
         src: /home/ubuntu/ansiblesaikumar/test.j2
         dest: /var/www/html/test.html
-      when: ansible_distribution == "CentOS"
 
 
 
