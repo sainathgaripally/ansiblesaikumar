@@ -3,12 +3,13 @@
   become: yes
 
   tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+        
     - name: Install apache2
       apt:
         name: apache2
         state: present
 
-    - name: Install httpd
-      yum:
-        name: httpd
-        state: present
