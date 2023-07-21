@@ -15,6 +15,19 @@
         state: present
       when: ansible_distribution == "Ubuntu"
 
+    - name: Start httpd
+      service:
+        name: httpd
+        state: started
+      when: ansible_distribution == "CentOS"
+
+
+    - name: Start apache2
+      service:
+        name: apache2
+        state: started
+      when: ansible_distribution == "Ubuntu"
+
     - name: Copy test.html file to worker node
       template:
         src: /home/ubuntu/ansiblesaikumar/test.j2
