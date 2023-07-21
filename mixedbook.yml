@@ -15,9 +15,9 @@
         state: present
       when: ansible_distribution == "Ubuntu"
 
-    - name: Create test.html file
-      copy:
-        src: /home/ubuntu/ansiblesaikumar/test.html
+    - name: Copy test.html file to worker node
+      template:
+        src: /home/ubuntu/ansiblesaikumar/test.j2
         dest: /var/www/html/test.html
       when: ansible_distribution == "CentOS"
 
