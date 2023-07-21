@@ -1,6 +1,8 @@
 - name: Install webservers on all nodes
   hosts: all
   become: yes
+  vars:
+    first_name: "Sainath"
 
   tasks:
     - name: Install httpd
