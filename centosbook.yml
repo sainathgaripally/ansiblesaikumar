@@ -15,6 +15,6 @@
 
     - name: Create test.html file
       copy:
-        src: /home/ubuntu/test.html
+        src: /home/ubuntu/ansiblesaikumar/test.html
         dest: /var/www/html/test.html
 
