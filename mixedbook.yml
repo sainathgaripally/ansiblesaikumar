@@ -12,24 +12,12 @@
         state: present
       when: ansible_distribution == "CentOS"
 
-    - name: Install apache2
-      apt:
-        name: apache2
-        state: present
-      when: ansible_distribution == "Ubuntu"
-
     - name: Start httpd
       service:
         name: httpd
         state: started
       when: ansible_distribution == "CentOS"
 
-
-    - name: Start apache2
-      service:
-        name: apache2
-        state: started
-      when: ansible_distribution == "Ubuntu"
 
     - name: Copy test.html file to worker node
       template:
@@ -40,6 +28,12 @@
       template:
         src: /home/ubuntu/ansiblesaikumar/httpd.j2
         dest: /etc/httpd/conf/httpd.conf
+
+    - name: Start httpd
+      service:
+        name: httpd
+        state: restarted
+      when: ansible_distribution == "CentOS"
 
 
 
